@@ -19,6 +19,11 @@ class App {
         // this.app.use(bodyParser.json());
         this.app.use(express.json());
         this.app.use(cookieParser());
+        this.app.use((req, res, next) => {
+            res.setHeader("Access-Control-Allow-Origin", "*");
+            res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+            next();
+        });
     }
     getServer() {
         console.log('got server');
